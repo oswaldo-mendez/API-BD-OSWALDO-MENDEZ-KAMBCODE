@@ -1,6 +1,9 @@
-const app = require('./app');
-const port = process.env.PORT || 3000;
+const app = require('./app'); // Importación del módulo app
 
-app.listen(port, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${port}`);
+// Configuración del puerto
+const PORT = process.env.PORT || 3000;
+
+// Iniciando el servidor en el puerto configurado
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
