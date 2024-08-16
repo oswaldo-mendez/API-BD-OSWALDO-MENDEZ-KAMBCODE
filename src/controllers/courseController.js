@@ -1,13 +1,16 @@
-const Course = require('../models/course');
+const course = require('../models/courses');
 
 const getAllCourses = async (req, res) => {
     try {
-      const courses = await Course.findAll();
+    
+      const courses = await course.findAll();
       res.json(courses);
+      console.log (courses);
     } catch (err) {
       res.status(500).json({ error: 'Error al obtener los cursos.' });
     }
 };
+
 
 const createCourse = async (req, res) => {
     try {
