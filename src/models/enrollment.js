@@ -1,20 +1,17 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Student = require('./student');
+const Course = require('./course');
 
-const Course = sequelize.define('Course', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  title: {
+const Enrollment = sequelize.define('Enrollment', {
+  grade: {
     type: DataTypes.STRING,
-    allowNull: false,
-  },
-  description: {
-    type: DataTypes.TEXT,
     allowNull: true,
   },
 });
 
-module.exports = Course;
+// Definir las relaciones
+Student.belongsToMany(Course, { through: Enrollment });
+Course.belongsToMany(Student, { through: Enrollment });
+
+module.exports = Enrollment;
